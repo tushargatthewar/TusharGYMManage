@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Membership Data</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        .payment-img {
+            max-width: 100px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Membership Data</h2>
+    <table>
+        <tr>
+            <th>Email</th>
+            <th>name</th>
+            <th>phone</th>
+            <th>address</th>
+           
+            <th>Membership Type</th>
+            <th>Payment Screenshot</th>
+            <th>Action</th>
+            <th>delete_membership</th>
+            <th>download_payment</th>
+        </tr>
+        {% for membership in memberships %}
+        <tr>
+            
+            <td>{{ membership.email }}</td>
+            <td>{{ membership.name }}</td>
+            <td>{{ membership.phone }}</td>
+            <td>{{ membership.address }}</td>
+            <td>{{ membership.membership_type }}</td>
+            <td><img src="{{ membership.payment_screenshot }}" alt="Payment Screenshot" class="payment-img"></td>
+            <td><a href="/view_payment/{{ membership._id }}">View Payment</a> |</td><td> <a href="/delete_membership/{{ membership._id }}">Delete Membership</a></td>
+            <td> <p>Payment Screenshot:</p>
+                <a href="{{ url_for('download_payment', filename=membership.payment_screenshot) }}" download>Download Payment Screenshot</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

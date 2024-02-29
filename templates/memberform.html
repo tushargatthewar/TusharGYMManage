@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Membership Registration</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Include your CSS file here -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        main {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: calc(100vh - 120px);
+        }
+
+        #membership-form {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 400px;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        form {
+            max-width: 100%;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        select {
+            appearance: none;
+            background: url('data:image/svg+xml;utf8,<svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16"><path fill="rgba(0,0,0,0.6)" d="M6 9l6 6 6-6"></path></svg>') no-repeat right 10px center/12px;
+        }
+
+        textarea {
+            resize: vertical;
+        }
+
+        input[type="file"] {
+            border: none;
+            background: #f1f1f1;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        input[type="file"]:focus {
+            outline: none;
+            background: #e5e5e5;
+        }
+
+        .btn {
+            background-color: #29a396;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .btn:hover {
+            background-color: #165f56;
+        }
+        /* Style for the QR code image */
+.qr-code {
+  display: block; /* Make the image a block element */
+  margin-top: 10px; /* Add some top margin for spacing */
+  max-width: 100px; /* Set maximum width to constrain the size */
+  height: auto; /* Allow the height to adjust automatically */
+}
+
+
+    </style>
+</head>
+<body>
+<header>
+    <h1>Membership Registration</h1>
+</header>
+<main>
+    <section id="membership-form">
+        <h2>Get Started Today!</h2>
+        <form action="/membership_register1" method="post" enctype="multipart/form-data">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required><br>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required><br>
+            <label for="address">Address:</label>
+            <input type="text" id="address" name="address" required><br>
+            <label for="phone">Phone Number:</label>
+            <input type="tel" id="phone" name="phone" required placeholder="Format: 123-45-678"><br>
+            <label for="membership-type">Select Membership Type:</label>
+            <select id="membership-type" name="membership-type" required>
+                <option value="personal-training">Personal Training</option>
+                <option value="group-classes">Group Classes</option>
+                <option value="nutritional-counseling">Nutritional Counseling</option>
+                <option value="massage-therapy">Massage Therapy</option>
+            </select><br>
+            <img src="{{url_for('static',filename='qr')}}" alt="QR Code" class="qr-code">
+            <label for="payment">Payment: Upload the screenshot of the payment</label><br>
+            <input type="file" id="payment" name="payment"><br>
+            <button type="submit" class="btn">Submit</button>
+        </form>
+    </section>
+</main>
+</body>
+</html>
